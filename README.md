@@ -12,9 +12,7 @@ The Pytorch implementation is from [ultralytics/yolov3 archive branch](https://g
 - bbox confidence threshold `BBOX_CONF_THRESH` in yolov4.cpp
 - `BATCH_SIZE` in yolov4.cpp
 
-## How to run
-
-1. generate yolov4.wts from pytorch implementation with yolov4.cfg and yolov4.weights, or download .wts from model zoo
+## How to generate yolo4.wts trained model from pytorch implementation with yolov4.cfg and yolov4.weights
 
 ```
 git clone https://github.com/wang-xinyu/tensorrtx.git
@@ -25,31 +23,28 @@ cd {ultralytics/yolov3/}
 python gen_wts.py yolov4.weights
 // a file 'yolov4.wts' will be generated.
 // the master branch of yolov3 should work, if not, you can checkout be87b41aa2fe59be8e62f4b488052b24ad0bd450
+Copy yolov4.wts into the main folder
 ```
+## Dependencies installation && building environment:
+Ubuntu 18.04,  CuDNN 7.6.5.32-1 + cuda10.2 + TensorTx 7.0.0-1
 
-2. put yolov4.wts into {tensorrtx}/yolov4, build and run
+OpenCV 4.4
 
-```
-mv yolov4.wts {tensorrtx}/yolov4/
-cd {tensorrtx}/yolov4
-mkdir build
+## Build app 
+sudo mkdir build 
 cd build
 cmake ..
-make
-sudo ./yolov4 -s                          // serialize model to plan file i.e. 'yolov4.engine'
-sudo ./yolov4 -d ../../yolov3-spp/samples // deserialize plan file and run inference, the images in samples will be processed.
-```
+make 
 
-3. check the images generated, as follows. _zidane.jpg and _bus.jpg
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/15235574/80863728-cbd3a780-8cb0-11ea-8640-7983bb41c354.jpg">
-</p>
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/15235574/80863730-cfffc500-8cb0-11ea-810e-94d693e71d80.jpg">
-</p>
+## Run app
+Choose video to be run for testing
+Go to the application folder
+Run 
+sudo ./yolo4 -s (convert wts model to model stream)
+sudo ./yolo4 -d <video_path>
 
 ## More Information
 
-See the readme in [home page.](https://github.com/wang-xinyu/tensorrtx)
+The code is copied from:
+Pedestrian Detection: https://github.com/wang-xinyu/tensorrtx
+Centroid tracking:  https://github.com/prat96/Centroid-Object-Tracking

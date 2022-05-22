@@ -25,16 +25,14 @@ cuda_add_library(myplugins SHARED ${PROJECT_SOURCE_DIR}/yololayer.cu ${PROJECT_S
 target_link_libraries(myplugins nvinfer cudart)
 
 find_package(OpenCV)
-find_package(Threads REQUIRED)
-find_package(LibDataChannel REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(yolov4 ${PROJECT_SOURCE_DIR}/yolov4.cpp ${PROJECT_SOURCE_DIR}/Tracker.cpp ${PROJECT_SOURCE_DIR}/DataStreaming.cpp)
+add_executable(yolov4 ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/Tracker.cpp ${PROJECT_SOURCE_DIR}/utils.cpp ${PROJECT_SOURCE_DIR}/YoloModel.cpp)
 target_link_libraries(yolov4 nvinfer)
 target_link_libraries(yolov4 cudart)
 target_link_libraries(yolov4 myplugins)
 target_link_libraries(yolov4 ${OpenCV_LIBS})
-target_link_libraries(yolov4 LibDataChannel::LibDataChannel Threads::Threads)
+#target_link_libraries(yolov4 LibDataChannel::LibDataChannel Threads::Threads)
 
 add_definitions(-O2 -pthread)
 

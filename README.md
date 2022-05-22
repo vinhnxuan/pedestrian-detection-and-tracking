@@ -26,25 +26,28 @@ python gen_wts.py yolov4.weights
 Copy yolov4.wts into the main folder
 ```
 ## Dependencies installation && building environment:
+```
 Ubuntu 18.04,  CuDNN 7.6.5.32-1 + cuda10.2 + TensorTx 7.0.0-1
-
 OpenCV 4.4
-
+```
 ## Build app 
+```
 sudo mkdir build 
 cd build
 cmake ..
 make 
-
+```
 ## Run app
+```
 Choose video to be run for testing
 Go to the application folder
 Run 
 sudo ./yolo4 -s (convert wts model to model stream)
 sudo ./yolo4 -d <video_path>
-
+```
 ## More Information
-
+```
 The code is copied from:
 Pedestrian Detection: https://github.com/wang-xinyu/tensorrtx
 Centroid tracking:  https://github.com/prat96/Centroid-Object-Tracking
+```

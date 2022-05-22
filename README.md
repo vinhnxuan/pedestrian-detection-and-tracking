@@ -47,7 +47,7 @@ sudo ./yolo4 -d <video_path>
 ```
 ## More Information
 ```
-The code is copied from:
+The code used:
 Pedestrian Detection: https://github.com/wang-xinyu/tensorrtx
 Centroid tracking:  https://github.com/prat96/Centroid-Object-Tracking
 ```
